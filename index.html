@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>专业中文简历模板</title>
+    <title>袁恒 - Java开发工程师简历</title>
     <style>
         /* --- Google Fonts & Global Reset --- */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
@@ -26,13 +26,13 @@
 
         body {
             font-family: 'Noto Sans SC', sans-serif;
-            background-color: #eef2f5; /* 页面在简历外的背景色 */
+            background-color: #eef2f5; /* Page background outside the resume */
             color: var(--text-color);
             line-height: 1.6;
             font-size: 14px;
         }
 
-        /* --- 主简历容器 (A4尺寸) --- */
+        /* --- Main Resume Container (A4 Size) --- */
         .resume-container {
             display: flex;
             width: 210mm;
@@ -42,35 +42,33 @@
             box-shadow: var(--shadow);
         }
 
-        /* --- 左侧边栏 --- */
+        /* --- Left Sidebar --- */
         .sidebar {
             width: 220px;
             background-color: var(--card-background);
             padding: 18px;
             color: var(--text-color);
             flex-shrink: 0;
-            border-right: 1px solid #f0f0f0;
         }
         
-        /* --- 右侧主内容区 --- */
+        /* --- Right Main Content --- */
         .main-content {
             flex-grow: 1;
             padding: 20px 35px;
         }
 
-        /* --- 可编辑内容样式 --- */
+        /* --- Editable Content Style --- */
         [contenteditable="true"] {
             cursor: text;
             transition: background-color 0.3s;
         }
         [contenteditable="true"]:hover,
         [contenteditable="true"]:focus {
-            background-color: #f0fff0; /* 编辑状态背景 */
+            background-color: #f0fff0;
             outline: 1px dashed var(--primary-color);
-            border-radius: 3px;
         }
 
-        /* --- 左侧边栏具体样式 --- */
+        /* --- Sidebar Specific Styles --- */
         .avatar-section {
             text-align: center;
             margin-bottom: 20px;
@@ -106,7 +104,6 @@
             text-align: center;
             color: var(--primary-color);
             margin-bottom: 25px;
-            padding: 5px;
         }
         .info-block {
             margin-bottom: 20px;
@@ -145,11 +142,23 @@
         }
         .block-content li {
             margin-bottom: 8px;
+            text-indent: -1.2em;
+            padding-left: 1.2em;
+        }
+        .block-content li::before {
+            content: '•';
+            color: var(--primary-color);
+            margin-right: 0.5em;
+        }
+        .block-content ul strong {
+             display: inline;
+             color: var(--primary-color);
+             font-weight: 700;
         }
 
-        /* --- 右侧主内容区具体样式 --- */
+        /* --- Main Content Specific Styles --- */
         .main-content section {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .main-content h2 {
             font-size: 20px;
@@ -165,7 +174,7 @@
             margin-bottom: 15px;
             padding: 10px 15px;
             background: var(--card-background);
-            border-left: 3px solid var(--primary-color); /* 左侧绿色装饰线 */
+            border-left: 4px solid var(--primary-color);
             border-radius: 0 var(--border-radius) var(--border-radius) 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
@@ -181,23 +190,29 @@
             font-size: 15px;
             margin-bottom: 8px;
         }
+        .item-description {
+            color: var(--light-text-color);
+            padding-bottom: 8px;
+            font-style: italic;
+        }
         .item-content {
              color: var(--light-text-color);
         }
+        .item-content p {
+             margin-top: 8px;
+        }
         .item-content ul {
-            list-style-type: none;
-            padding-left: 15px;
+            list-style-type: disc;
+            padding-left: 20px;
         }
         .item-content ul li {
             margin-bottom: 5px;
-            position: relative;
+            padding-left: 0;
+            text-indent: 0;
         }
         .item-content ul li::before {
-             content: '•';
-             color: var(--primary-color);
-             position: absolute;
-             left: -15px;
-             font-size: 14px;
+             content: '';
+             margin-right: 0;
         }
         
         .skills-list {
@@ -207,15 +222,21 @@
         .skills-list li {
             margin-bottom: 10px;
             display: flex;
+            padding-left: 0;
+            text-indent: 0;
+        }
+        .skills-list li::before {
+             content: '';
+             margin-right: 0;
         }
         .skills-list strong {
             font-weight: 700;
             color: var(--text-color);
             flex-shrink: 0;
-            width: 100px;
+            width: 90px;
         }
         
-        /* --- 操作按钮与打印优化 --- */
+        /* --- Action Buttons & Print Optimization --- */
         .action-buttons {
             text-align: center;
             padding: 20px 0 40px 0;
@@ -236,7 +257,7 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
-        /* --- 响应式设计 --- */
+        /* --- Responsive Design --- */
         @media (max-width: 800px) {
             body {
                 background-color: var(--background-color);
@@ -251,14 +272,13 @@
             .sidebar {
                 width: 100%;
                 border-bottom: 2px solid #e0e0e0;
-                border-right: none;
             }
             .main-content {
                 padding: 20px;
             }
         }
         
-        /* --- 打印样式 --- */
+        /* --- Print Styles --- */
         @media print {
             @page {
                 size: A4;
@@ -268,7 +288,6 @@
                 width: 210mm;
                 height: 297mm;
                 background: #fff;
-                font-size: 12px; /* 打印时可以适当缩小字体 */
             }
             .resume-container {
                 margin: 0;
@@ -283,15 +302,6 @@
                 outline: none;
                 background-color: transparent;
             }
-             .main-content h2 {
-                padding-bottom: 5px;
-                margin-bottom: 15px;
-             }
-             .item {
-                box-shadow: none;
-                border: 1px solid #eee;
-                border-left: 3px solid var(--primary-color);
-             }
         }
     </style>
 </head>
@@ -301,39 +311,38 @@
         <!-- ========== 左侧边栏 ========== -->
         <aside class="sidebar">
             <div class="avatar-section">
-                <!-- 默认头像更改为 xjpic.jpg, 请确保该文件与HTML在同一目录下 -->
-                <img id="avatar-img" src="xjpic.jpg" alt="个人头像" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2NjYyI+PHBhdGggZD0iTTEyIDExYTMgMyAwIDEgMCAwLTYgMyAzIDAgMCAwIDAgNnptMCAyYTggOCAwIDEgMSAwLTE2IDggOCAwIDAgMSAwIDE2em0tNi44MDQgMy4wMTRhNS4wMDIgNS4wMDIgMCAwIDEgMTAuNjA5LS45NzcgMTAuMDA0IDEwLjAwNCAwIDAgMS0xMi42MjggNC4zNDIgMiAyIDAgMCAxIC41MTctMi42NTYgNC45ODIgNC45ODIgMCAwIDEgMS41MDItLjcxfS4wMDF6Ii8+PC9zdmc+'; this.onerror=null;">
+                <img id="avatar-img" src="xjpic.jpg" alt="个人头像">
                 <input type="file" id="avatar-upload-input" accept="image/*">
                 <button class="upload-btn" onclick="document.getElementById('avatar-upload-input').click()">更换头像</button>
             </div>
 
-            <h1 class="name" contenteditable="true">你的姓名</h1>
+            <h1 class="name" contenteditable="true">袁恒</h1>
 
             <div class="info-block">
                 <div class="block-title">基本信息</div>
                 <div class="block-content">
-                    <p><span>生日</span> <span contenteditable="true">1999.01.01</span></p>
-                    <p><span>籍贯</span> <span contenteditable="true">中国北京</span></p>
-                    <p><span>现居</span> <span contenteditable="true">中国上海</span></p>
-                    <p><span>求职意向</span> <span contenteditable="true">前端开发工程师</span></p>
+                    <p><span contenteditable="true">求职意向</span> <span contenteditable="true">Java开发工程师</span></p>
+                    <p><span contenteditable="true">工作经验</span> <span contenteditable="true">应届生</span></p>
+                    <p><span contenteditable="true">学  历</span> <span contenteditable="true">本科</span></p>
+                    <p><span contenteditable="true">毕业院校</span> <span contenteditable="true">湖南工业大学科技学院</span></p>
                 </div>
             </div>
 
             <div class="info-block">
                 <div class="block-title">联系方式</div>
                 <div class="block-content">
-                    <p><span>手机</span> <span contenteditable="true">138-0013-8000</span></p>
-                    <p><span>邮箱</span> <span contenteditable="true">your.email@example.com</span></p>
+                    <p><span contenteditable="true">手机</span> <span contenteditable="true">15873411932</span></p>
+                    <p><span contenteditable="true">邮箱</span> <span contenteditable="true">3147226574@qq.com</span></p>
                 </div>
             </div>
 
             <div class="info-block">
-                <div class="block-title">个人荣誉</div>
+                <div class="block-title">核心优势</div>
                 <div class="block-content" contenteditable="true">
                     <ul>
-                        <li>2023年 国家一等奖学金</li>
-                        <li>2022年 ACM竞赛省级二等奖</li>
-                        <li>2021年 优秀学生干部</li>
+                        <li><strong>快速学习：</strong>对新技术充满热情，具备出色的自学和解决问题能力。</li>
+                        <li><strong>团队协作：</strong>沟通能力强，能迅速融入团队，积极承担责任。</li>
+                        <li><strong>AI增效：</strong>熟练运用AI工具(Claude/GPT/Cursor)辅助编码、调试和学习，显著提升开发效率。</li>
                     </ul>
                 </div>
             </div>
@@ -346,66 +355,77 @@
                 <h2>🎓 教育背景</h2>
                 <div class="item">
                     <div class="item-header">
-                        <span contenteditable="true">XX大学</span>
+                        <span contenteditable="true">湖南工业大学科技学院</span>
                         <span contenteditable="true">2021.09 - 2025.06</span>
                     </div>
                     <div class="item-subheader" contenteditable="true">计算机科学与技术 (本科)</div>
+                    <!-- --- UPDATED SECTION --- -->
                     <div class="item-content" contenteditable="true">
-                        主修课程：数据结构、计算机网络、操作系统、数据库原理、软件工程等。
+                        <p><strong>核心课程：</strong>操作系统、软件工程、数据结构、计算机网络</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>💡 专业技能</h2>
+                <div class="skills-list" contenteditable="true">
+                    <ul>
+                        <li><strong>后端：</strong>熟练掌握 Java, SpringBoot, MyBatis-Plus, Redis, MySQL</li>
+                        <li><strong>前端：</strong>熟练掌握 Vue.js, Element-UI, Axios, ECharts, JavaScript, HTML/CSS</li>
+                        <li><strong>开发工具：</strong>熟练使用 IntelliJ IDEA, Git, Maven, Cursor 等AI编程工具</li>
+                        <li><strong>云服务：</strong>具备阿里云OSS对象存储、VOD视频点播服务的实战经验</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="projects">
+                <h2>💻 核心项目经验</h2>
+                <div class="item">
+                    <div class="item-header">
+                        <span contenteditable="true">在线教育平台 (SpringBoot + Vue)</span>
+                        <span contenteditable="true">毕业设计</span>
+                    </div>
+                    <div class="item-subheader" contenteditable="true">一个前后端分离的全功能在线教育解决方案</div>
+                    <div class="item-description" contenteditable="true">项目描述：该平台为学员、讲师、管理员提供一站式教学管理服务，涵盖课程发布、在线学习、订单管理、数据统计等核心功能，并创新性地集成了云服务与AI助手。</div>
+                    <div class="item-content" contenteditable="true">
+                        <p><strong>我的职责与贡献：</strong></p>
+                        <ul>
+                            <li>后端主导：以 SpringBoot 为核心，集成MyBatis-Plus与 Redis (缓存/认证)，优化系统性能与安全。</li>
+                            <li>云服务集成：独立开发文件上传模块，成功对接阿里云OSS与VOD，实现课程封面、视频等资源的云端存储与管理。</li>
+                            <li>核心业务实现：完成用户权限管理、课程管理、讲师管理、数据统计等关键模块的开发与测试。</li>
+                            <li>前端协同：基于 Vue 和 Element-UI 构建多角色管理后台，并使用 ECharts 实现运营数据可视化。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-header">
+                        <span contenteditable="true">万都小说App (Java Web + Vue 3)</span>
+                        <span contenteditable="true">大三学年</span>
+                    </div>
+                    <div class="item-subheader" contenteditable="true">一个独立开发的全栈响应式小说阅读应用</div>
+                    <div class="item-content" contenteditable="true">
+                        <p><strong>我的职责与贡献：</strong></p>
+                        <ul>
+                            <li>全栈开发：独立负责从数据库设计、后端API编写(Java Web)到前端界面实现(Vue 3)的全部工作。</li>
+                            <li>前端实现：采用 Vue 3 组合式API和组件化思想，构建了清晰易用的响应式交互界面。</li>
+                        </ul>
                     </div>
                 </div>
             </section>
 
             <section id="experience">
-                <h2>💼 工作经验</h2>
+                <h2>💼 实习经历</h2>
                 <div class="item">
                     <div class="item-header">
-                        <span contenteditable="true">未来科技有限公司</span>
-                        <span contenteditable="true">2024.07 - 至今</span>
+                        <span contenteditable="true">奥嵌有限公司</span>
+                        <span contenteditable="true">2024.07 - 2024.09</span>
                     </div>
-                    <div class="item-subheader" contenteditable="true">前端开发实习生</div>
+                    <div class="item-subheader" contenteditable="true">Java开发 & 嵌入式实习生</div>
                     <div class="item-content" contenteditable="true">
                         <ul>
-                            <li>负责公司核心产品XX管理后台的前端开发与维护工作。</li>
-                            <li>使用Vue.js和Element Plus重构了用户管理模块，提升了页面加载速度20%。</li>
-                            <li>与后端工程师协作，通过RESTful API完成数据交互，实现了产品订单流的闭环。</li>
-                            <li>参与代码审查（Code Review），提出建设性意见，帮助团队提升代码质量和可维护性。</li>
+                           <li>系统性地完成了Java Web全栈技能培训，掌握了从后端Java、JDBC到前端HTML、JavaScript及SSH框架的开发流程，为后续项目开发奠定了坚实基础。</li>
+                           <li>参与嵌入式Linux项目，使用C语言进行多媒体应用开发，锻炼了底层编程能力与系统级问题解决能力。</li>
                         </ul>
-                    </div>
-                </div>
-                 <div class="item">
-                    <div class="item-header">
-                        <span contenteditable="true">开源社区贡献</span>
-                        <span contenteditable="true">2023.10 - 2024.05</span>
-                    </div>
-                    <div class="item-subheader" contenteditable="true">项目贡献者</div>
-                    <div class="item-content" contenteditable="true">
-                        <ul>
-                            <li>为开源项目 "Awesome-Lib" 贡献代码，修复了3个已知Bug。</li>
-                            <li>撰写并提交了该项目的中文版入门文档，方便了国内开发者使用。</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="skills">
-                <h2>💡 技能特长</h2>
-                <div class="skills-list" contenteditable="true">
-                    <ul>
-                        <li><strong>前端框架：</strong>熟练掌握 Vue.js (Vue 2/3), React, 了解其生态及原理。</li>
-                        <li><strong>编程语言：</strong>精通 JavaScript (ES6+), TypeScript, HTML5, CSS3。</li>
-                        <li><strong>工程化：</strong>熟练使用 Webpack, Vite, Git, Npm/Yarn 等工具。</li>
-                        <li><strong>后端相关：</strong>了解 Node.js, Express, 能够编写简单的后端API接口。</li>
-                        <li><strong>其他：</strong>具备良好的编码规范，熟悉响应式布局，有小程序开发经验。</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="evaluation">
-                <h2>🧠 自我评价</h2>
-                <div class="item">
-                    <div class="item-content" contenteditable="true">
-                        <p>本人具备扎实的计算机基础和前端开发技能，对技术有强烈的热情和好奇心，乐于钻研和学习新技术。拥有良好的团队协作精神和沟通能力，能够快速融入团队并承担责任。具备较强的抗压能力和问题解决能力，能够独立分析并解决开发过程中遇到的难题。</p>
                     </div>
                 </div>
             </section>
@@ -418,7 +438,7 @@
     </div>
 
     <script>
-        // --- 头像上传逻辑 ---
+        // --- Avatar Upload Logic ---
         const avatarUploadInput = document.getElementById('avatar-upload-input');
         const avatarImg = document.getElementById('avatar-img');
 
