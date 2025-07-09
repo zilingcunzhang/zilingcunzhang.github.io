@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>袁恒 - Java开发工程师简历</title>
+    <style>
+        /* --- Google Fonts & Global Reset --- */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+        :root {
+            --primary-color: #76b900;
+            --background-color: #fafafa;
+            --card-background: #ffffff;
+            --text-color: #333333;
+            --light-text-color: #666666;
+            --border-radius: 8px;
+            --shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #eef2f5; /* Page background outside the resume */
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* --- Main Resume Container (A4 Size) --- */
+        .resume-container {
+            display: flex;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 30px auto;
+            background-color: var(--background-color);
+            box-shadow: var(--shadow);
+        }
+
+        /* --- Left Sidebar --- */
+        .sidebar {
+            width: 220px;
+            background-color: var(--card-background);
+            padding: 18px;
+            color: var(--text-color);
+            flex-shrink: 0;
+        }
+        
+        /* --- Right Main Content --- */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px 35px;
+        }
+
+        /* --- Editable Content Style --- */
+        [contenteditable="true"] {
+            cursor: text;
+            transition: background-color 0.3s;
+        }
+        [contenteditable="true"]:hover,
+        [contenteditable="true"]:focus {
+            background-color: #f0fff0;
+            outline: 1px dashed var(--primary-color);
+        }
+
+        /* --- Sidebar Specific Styles --- */
+        .avatar-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #avatar-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        #avatar-upload-input {
+            display: none;
+        }
+        .upload-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .upload-btn:hover {
+            background-color: #5e9400;
+        }
+        .sidebar .name {
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+        .info-block {
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background: var(--card-background);
+        }
+        .block-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 6px;
+            font-weight: 500;
+            text-align: center;
+        }
+        .block-content {
+            padding: 12px;
+            font-size: 13px;
+        }
+        .block-content p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .block-content p span:first-child {
+            font-weight: 500;
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
+        .block-content p span:last-child {
+            text-align: right;
+        }
+        .block-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .block-content li {
+            margin-bottom: 8px;
+            text-indent: -1.2em;
+            padding-left: 1.2em;
+        }
+        .block-content li::before {
+            content: '•';
+            color: var(--primary-color);
+            margin-right: 0.5em;
+        }
+        .block-content ul strong {
+             display: inline;
+             color: var(--primary-color);
+             font-weight: 700;
+        }
+
+        /* --- Main Content Specific Styles --- */
+        .main-content section {
+            margin-bottom: 25px;
+        }
+        .main-content h2 {
+            font-size: 20px;
+            color: var(--primary-color);
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .item {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background: var(--card-background);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .item-subheader {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .item-description {
+            color: var(--light-text-color);
+            padding-bottom: 8px;
+            font-style: italic;
+        }
+        .item-content {
+             color: var(--light-text-color);
+        }
+        .item-content p {
+             margin-top: 8px;
+        }
+        .item-content ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .item-content ul li {
+            margin-bottom: 5px;
+            padding-left: 0;
+            text-indent: 0;
+        }
+        .item-content ul li::before {
+             content: '';
+             margin-right: 0;
+        }
+        
+        .skills-list {
+            list-style: none;
+            padding: 0;
+        }
+        .skills-list li {
+            margin-bottom: 10px;
+            display: flex;
+            padding-left: 0;
+            text-indent: 0;
+        }
+        .skills-list li::before {
+             content: '';
+             margin-right: 0;
+        }
+        .skills-list strong {
+            font-weight: 700;
+            color: var(--text-color);
+            flex-shrink: 0;
+            width: 90px;
+        }
+        
+        /* --- Action Buttons & Print Optimization --- */
+        .action-buttons {
+            text-align: center;
+            padding: 20px 0 40px 0;
+        }
+        .export-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .export-btn:hover {
+            background-color: #5e9400;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 800px) {
+            body {
+                background-color: var(--background-color);
+            }
+            .resume-container {
+                flex-direction: column;
+                width: 100%;
+                min-height: auto;
+                margin: 0;
+                box-shadow: none;
+            }
+            .sidebar {
+                width: 100%;
+                border-bottom: 2px solid #e0e0e0;
+            }
+            .main-content {
+                padding: 20px;
+            }
+        }
+        
+        /* --- Print Styles --- */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            html, body {
+                width: 210mm;
+                height: 297mm;
+                background: #fff;
+            }
+            .resume-container {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                height: 100%;
+            }
+            .action-buttons, .upload-btn {
+                display: none;
+            }
+            [contenteditable="true"] {
+                outline: none;
+                background-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <!-- ========== 左侧边栏 ========== -->
+        <aside class="sidebar">
+            <div class="avatar-section">
+                <img id="avatar-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2NjYyI+PHBhdGggZD0iTTEyIDExYTMgMyAwIDEgMCAwLTYgMyAzIDAgMCAwIDAgNnptMCAyYTggOCAwIDEgMSAwLTE2IDggOCAwIDAgMSAwIDE2em0tNi44MDQgMy4wMTRhNS4wMDIgNS4wMDIgMCAwIDEgMTAuNjA5LS45NzcgMTAuMDA0IDEwLjAwNCAwIDAgMS0xMi42MjggNC4zNDIgMiAyIDAgMCAxIC41MTctMi42NTYgNC45ODIgNC45ODIgMCAwIDEgMS41MDItLjcxfS4wMDF6Ii8+PC9zdmc+" alt="个人头像">
+                <input type="file" id="avatar-upload-input" accept="image/*">
+                <button class="upload-btn" onclick="document.getElementById('avatar-upload-input').click()">更换头像</button>
+            </div>
+
+            <h1 class="name" contenteditable="true">袁恒</h1>
+
+            <div class="info-block">
+                <div class="block-title">基本信息</div>
+                <div class="block-content">
+                    <p><span contenteditable="true">求职意向</span> <span contenteditable="true">Java开发工程师</span></p>
+                    <p><span contenteditable="true">工作经验</span> <span contenteditable="true">应届生</span></p>
+                    <p><span contenteditable="true">学  历</span> <span contenteditable="true">本科</span></p>
+                    <p><span contenteditable="true">毕业院校</span> <span contenteditable="true">湖南工业大学科技学院</span></p>
+                </div>
+            </div>
+
+            <div class="info-block">
+                <div class="block-title">联系方式</div>
+                <div class="block-content">
+                    <p><span contenteditable="true">手机</span> <span contenteditable="true">15873411932</span></p>
+                    <p><span contenteditable="true">邮箱</span> <span contenteditable="true">3147226574@qq.com</span></p>
+                </div>
+            </div>
+
+            <div class="info-block">
+                <div class="block-title">核心优势</div>
+                <div class="block-content" contenteditable="true">
+                    <ul>
+                        <li><strong>快速学习：</strong>对新技术充满热情，具备出色的自学和解决问题能力。</li>
+                        <li><strong>团队协作：</strong>沟通能力强，能迅速融入团队，积极承担责任。</li>
+                        <li><strong>AI增效：</strong>熟练运用AI工具(Claude/GPT/Cursor)辅助编码、调试和学习，显著提升开发效率。</li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ========== 右侧主内容区 ========== -->
+        <main class="main-content">
+
+            <section id="education">
+                <h2>🎓 教育背景</h2>
+                <div class="item">
+                    <div class="item-header">
+                        <span contenteditable="true">湖南工业大学科技学院</span>
+                        <span contenteditable="true">2021.09 - 2025.06</span>
+                    </div>
+                    <div class="item-subheader" contenteditable="true">计算机科学与技术 (本科)</div>
+                    <!-- --- UPDATED SECTION --- -->
+                    <div class="item-content" contenteditable="true">
+                        <p><strong>核心课程：</strong>操作系统、软件工程、数据结构、计算机网络</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>💡 专业技能</h2>
+                <div class="skills-list" contenteditable="true">
+                    <ul>
+                        <li><strong>后端：</strong>熟练掌握 Java, SpringBoot, MyBatis-Plus, Redis, MySQL</li>
+                        <li><strong>前端：</strong>熟练掌握 Vue.js, Element-UI, Axios, ECharts, JavaScript, HTML/CSS</li>
+                        <li><strong>开发工具：</strong>熟练使用 IntelliJ IDEA, Git, Maven, Cursor 等AI编程工具</li>
+                        <li><strong>云服务：</strong>具备阿里云OSS对象存储、VOD视频点播服务的实战经验</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="projects">
+                <h2>💻 核心项目经验</h2>
+                <div class="item">
+                    <div class="item-header">
+                        <span contenteditable="true">在线教育平台 (SpringBoot + Vue)</span>
+                        <span contenteditable="true">毕业设计</span>
+                    </div>
+                    <div class="item-subheader" contenteditable="true">一个前后端分离的全功能在线教育解决方案</div>
+                    <div class="item-description" contenteditable="true">项目描述：该平台为学员、讲师、管理员提供一站式教学管理服务，涵盖课程发布、在线学习、订单管理、数据统计等核心功能，并创新性地集成了云服务与AI助手。</div>
+                    <div class="item-content" contenteditable="true">
+                        <p><strong>我的职责与贡献：</strong></p>
+                        <ul>
+                            <li>后端主导：以 SpringBoot 为核心，集成MyBatis-Plus与 Redis (缓存/认证)，优化系统性能与安全。</li>
+                            <li>云服务集成：独立开发文件上传模块，成功对接阿里云OSS与VOD，实现课程封面、视频等资源的云端存储与管理。</li>
+                            <li>核心业务实现：完成用户权限管理、课程管理、讲师管理、数据统计等关键模块的开发与测试。</li>
+                            <li>前端协同：基于 Vue 和 Element-UI 构建多角色管理后台，并使用 ECharts 实现运营数据可视化。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-header">
+                        <span contenteditable="true">万都小说App (Java Web + Vue 3)</span>
+                        <span contenteditable="true">大三学年</span>
+                    </div>
+                    <div class="item-subheader" contenteditable="true">一个独立开发的全栈响应式小说阅读应用</div>
+                    <div class="item-content" contenteditable="true">
+                        <p><strong>我的职责与贡献：</strong></p>
+                        <ul>
+                            <li>全栈开发：独立负责从数据库设计、后端API编写(Java Web)到前端界面实现(Vue 3)的全部工作。</li>
+                            <li>前端实现：采用 Vue 3 组合式API和组件化思想，构建了清晰易用的响应式交互界面。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience">
+                <h2>💼 实习经历</h2>
+                <div class="item">
+                    <div class="item-header">
+                        <span contenteditable="true">奥嵌有限公司</span>
+                        <span contenteditable="true">2024.07 - 2024.09</span>
+                    </div>
+                    <div class="item-subheader" contenteditable="true">Java开发 & 嵌入式实习生</div>
+                    <div class="item-content" contenteditable="true">
+                        <ul>
+                           <li>系统性地完成了Java Web全栈技能培训，掌握了从后端Java、JDBC到前端HTML、JavaScript及SSH框架的开发流程，为后续项目开发奠定了坚实基础。</li>
+                           <li>参与嵌入式Linux项目，使用C语言进行多媒体应用开发，锻炼了底层编程能力与系统级问题解决能力。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div class="action-buttons">
+        <button class="export-btn" onclick="window.print()">导出为PDF</button>
+    </div>
+
+    <script>
+        // --- Avatar Upload Logic ---
+        const avatarUploadInput = document.getElementById('avatar-upload-input');
+        const avatarImg = document.getElementById('avatar-img');
+
+        avatarUploadInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    avatarImg.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+</body>
+</html>
