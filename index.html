@@ -368,49 +368,80 @@
 
             <section id="skills">
                 <h2>💡 专业技能</h2>
+                <!-- 
+                    【简历编写技巧 - 动态调整】
+                    投递简历时，请根据JD（职位描述）动态调整以下内容：
+                    1. 只列出你真正“熟练”且与岗位要求匹配的 2-4 个核心技能。
+                    2. 不太熟练但了解的技能，不要写“熟练”，可以放在“核心优势”里提到，或者放在“其他技能”中。
+                -->
                 <div class="skills-list" contenteditable="true">
                     <ul>
-                        <li><strong>后端：</strong>熟练掌握 Java, SpringBoot, MyBatis-Plus, Redis, MySQL</li>
-                        <li><strong>前端：</strong>熟练掌握 Vue.js, Element-UI, Axios, ECharts, JavaScript, HTML/CSS</li>
-                        <li><strong>开发工具：</strong>熟练使用 IntelliJ IDEA, Git, Maven, Cursor 等AI编程工具</li>
-                        <li><strong>云服务：</strong>具备阿里云OSS对象存储、VOD视频点播服务的实战经验</li>
+                        <li><strong>核心技术栈：</strong>熟练掌握 Java (SpringBoot / MyBatis-Plus) 与 Vue.js 前后端分离开发模式。</li>
+                        <li><strong>数据库/中间件：</strong>熟练使用 MySQL 进行数据库设计，熟悉 Redis 缓存应用。</li>
+                        <li><strong>工程化工具：</strong>熟练使用 Git 版本控制，熟悉 Maven 构建与 Linux 基础命令。</li>
+                        <!-- 备选技能（根据岗位决定是否展示）：
+                        <li><strong>云服务实战：</strong>具备阿里云 OSS / VOD 对接经验。</li>
+                        <li><strong>前端技术：</strong>熟悉 Element-UI, JavaScript, ECharts 可视化。</li>
+                        -->
                     </ul>
                 </div>
             </section>
             
             <section id="projects">
                 <h2>💻 核心项目经验</h2>
+                
+                <!-- 项目 1 -->
                 <div class="item">
                     <div class="item-header">
-                        <span contenteditable="true">在线教育平台 (SpringBoot + Vue)</span>
-                        <span contenteditable="true">毕业设计</span>
+                        <span contenteditable="true">在线教育平台 (毕业设计)</span>
+                        <span contenteditable="true">2024.12 - 2025.04</span>
                     </div>
-                    <div class="item-subheader" contenteditable="true">一个前后端分离的全功能在线教育解决方案</div>
-                    <div class="item-description" contenteditable="true">项目描述：该平台为学员、讲师、管理员提供一站式教学管理服务，涵盖课程发布、在线学习、订单管理、数据统计等核心功能，并创新性地集成了云服务与AI助手。</div>
                     <div class="item-content" contenteditable="true">
-                        <p><strong>我的职责与贡献：</strong></p>
+                        <p><strong>项目角色：</strong>后端核心开发 / 全栈协作者</p>
+                        <p><strong>技术栈：</strong>SpringBoot, MyBatis-Plus, Redis, MySQL, Vue.js, 阿里云OSS</p>
+                        <p><strong>项目难点与解决方案：</strong></p>
                         <ul>
-                            <li>后端主导：以 SpringBoot 为核心，集成MyBatis-Plus与 Redis (缓存/认证)，优化系统性能与安全。</li>
-                            <li>云服务集成：独立开发文件上传模块，成功对接阿里云OSS与VOD，实现课程封面、视频等资源的云端存储与管理。</li>
-                            <li>核心业务实现：完成用户权限管理、课程管理、讲师管理、数据统计等关键模块的开发与测试。</li>
-                            <li>前端协同：基于 Vue 和 Element-UI 构建多角色管理后台，并使用 ECharts 实现运营数据可视化。</li>
+                            <li><strong>大文件存储问题：</strong>针对视频课程占用服务器带宽问题，通过对接阿里云OSS和VOD，实现了视频的云端直传与点播，降低了本地服务器压力。</li>
+                            <li><strong>高并发性能优化：</strong>在课程详情页等高频访问接口引入 Redis 缓存，减少数据库查询次数，提升了系统响应速度。</li>
+                            <li><strong>复杂权限管理：</strong>设计了基于角色的权限控制系统(RBAC)，实现了学员、讲师、管理员三端的权限隔离与数据安全。</li>
                         </ul>
                     </div>
                 </div>
+
+                <!-- 项目 2 -->
                 <div class="item">
                     <div class="item-header">
-                        <span contenteditable="true">万都小说App (Java Web + Vue 3)</span>
-                        <span contenteditable="true">大三学年</span>
+                        <span contenteditable="true">万都小说App (个人全栈)</span>
+                        <span contenteditable="true">2024.03 - 2024.06</span>
                     </div>
-                    <div class="item-subheader" contenteditable="true">一个独立开发的全栈响应式小说阅读应用</div>
                     <div class="item-content" contenteditable="true">
-                        <p><strong>我的职责与贡献：</strong></p>
+                        <p><strong>项目角色：</strong>独立开发者 (Full Stack)</p>
+                        <p><strong>技术栈：</strong>Java Web, Vue 3, Vant UI, JDBC</p>
+                        <p><strong>主要贡献：</strong></p>
                         <ul>
-                            <li>全栈开发：独立负责从数据库设计、后端API编写(Java Web)到前端界面实现(Vue 3)的全部工作。</li>
-                            <li>前端实现：采用 Vue 3 组合式API和组件化思想，构建了清晰易用的响应式交互界面。</li>
+                            <li><strong>从0到1架构：</strong>独立完成了从数据库ER图设计、后端API接口规范制定到前端页面交互的完整开发流程。</li>
+                            <li><strong>用户体验优化：</strong>前端采用 Vue 3 组合式API重构逻辑，配合 Vant UI 实现了丝滑的移动端阅读体验（如触屏翻页、夜间模式）。</li>
                         </ul>
                     </div>
                 </div>
+
+                <!-- 项目 3 (新增占位，建议凑齐3个) -->
+                <div class="item">
+                    <div class="item-header">
+                        <span contenteditable="true">企业员工管理系统 (课程设计)</span>
+                        <span contenteditable="true">2023.09 - 2023.11</span>
+                    </div>
+                    <div class="item-content" contenteditable="true">
+                        <p><strong>项目角色：</strong>后端开发组长</p>
+                        <p><strong>技术栈：</strong>SSM (Spring+SpringMVC+MyBatis), JSP, jQuery</p>
+                        <p><strong>主要贡献：</strong></p>
+                        <ul>
+                            <li><strong>团队协作：</strong>带领3人小组制定开发计划，使用 Git 进行代码合并与冲突解决。</li>
+                            <li><strong>功能实现：</strong>实现了复杂的员工多条件组合查询与报表导出功能，解决了多表关联查询的数据一致性问题。</li>
+                        </ul>
+                    </div>
+                </div>
+
             </section>
 
             <section id="experience">
