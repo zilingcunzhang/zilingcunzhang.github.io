@@ -3,24 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="袁恒 - Java开发工程师简历 | 熟练掌握SpringBoot、MyBatis-Plus、Vue.js等技术栈，具备全栈开发能力">
+    <meta name="keywords" content="Java开发,SpringBoot,Vue.js,简历,求职">
+    <meta name="author" content="袁恒">
+    <!-- Open Graph / 社交分享 -->
+    <meta property="og:title" content="袁恒 - Java开发工程师简历">
+    <meta property="og:description" content="应届本科生，熟练掌握Java全栈开发技术">
+    <meta property="og:type" content="profile">
     <title>袁恒 - Java开发工程师简历</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
     <style>
-        /* --- Global Variables & Reset --- */
+        /* --- Theme Colors (Default Green) --- */
         :root {
-            /* 主色调：稳重的墨绿色 */
-            --primary-color: #2E7D32; 
-            /* 强调色：稍浅的绿色 */
-            --accent-color: #4CAF50;
-            /* 背景色 */
+            /* 默认绿色 */
+            --primary-green: #2E7D32;
+            --accent-green: #4CAF50;
+            --bg-sidebar-green: #fafdfa;
+            --border-green: #e8f5e9;
+            
+            /* 蓝色主题 */
+            --primary-blue: #1565C0;
+            --accent-blue: #2196F3;
+            --bg-sidebar-blue: #f5f9fd;
+            --border-blue: #e3f2fd;
+            
+            /* 紫色主题 */
+            --primary-purple: #6A1B9A;
+            --accent-purple: #9C27B0;
+            --bg-sidebar-purple: #fbf5fd;
+            --border-purple: #f3e5f5;
+            
+            /* 灰色主题 (极简) */
+            --primary-gray: #455A64;
+            --accent-gray: #607D8B;
+            --bg-sidebar-gray: #fcfcfc;
+            --border-gray: #eceff1;
+
+            /* 当前生效的变量 (初始化映射到绿色) */
+            --primary-color: var(--primary-green);
+            --accent-color: var(--accent-green);
+            --bg-sidebar: var(--bg-sidebar-green);
+            --border-color: var(--border-green);
+
+            /* 通用背景 */
             --bg-body: #eaeff2;
-            --bg-paper: #ffffff;
-            --bg-sidebar: #fafdfa; /* 极淡的绿色背景，比纯白更有质感 */
-            /* 文字颜色 */
-            --text-main: #2c3e50;
-            --text-secondary: #455a64;
-            --text-light: #78909c;
-            /* 边框与分割线 */
-            --border-color: #e8f5e9;
+
             /* 尺寸 */
             --page-width: 210mm;
             --sidebar-width: 260px; /* 稍微加宽侧边栏以容纳图标 */
@@ -151,6 +179,17 @@
             flex: 1;
             word-break: break-all;
             line-height: 1.5;
+        }
+        
+        /* GitHub 链接样式 */
+        .github-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .github-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
         }
         
         /* 核心优势列表 */
@@ -302,6 +341,14 @@
         
         #avatar-upload-input { display: none; }
         
+        /* 第二页页眉 - 仅打印时显示 */
+        .print-only {
+            display: none;
+        }
+        .page-header {
+            display: none;
+        }
+        
         .upload-btn {
             margin-top: 15px;
             background: #fff;
@@ -322,6 +369,77 @@
         .action-buttons {
             text-align: center;
             padding-bottom: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            position: relative;
+        }
+
+        /* 颜色切换器 */
+        .theme-switcher {
+            display: flex;
+            gap: 10px;
+            background: #fff;
+            padding: 8px 15px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            margin-right: 15px;
+        }
+        
+        .theme-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 2px solid transparent;
+        }
+        .theme-dot:hover {
+            transform: scale(1.2);
+        }
+        .theme-dot.active {
+            border-color: var(--text-main);
+            transform: scale(1.1);
+        }
+        
+        /* 保存提示 Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--primary-color);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 30px 20px 40px;
+            color: var(--text-light);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
         }
         .export-btn {
             background: var(--primary-color);
@@ -379,19 +497,274 @@
         }
 
         @media print {
-            @page { margin: 0; size: auto; }
-            body { background: #fff; }
-            .resume-container {
-                width: 100%;
-                min-height: 100vh;
-                margin: 0;
-                box-shadow: none;
+            /* A4 纸张设置 */
+            @page {
+                size: A4 portrait;
+                margin: 10mm 8mm 10mm 8mm;
             }
-            .sidebar { background-color: var(--bg-sidebar) !important; -webkit-print-color-adjust: exact; }
-            .action-buttons, .upload-btn { display: none; }
-            [contenteditable="true"] { outline: none; background: none !important; }
-            section h2 { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .item-header span:last-child { background: none; border: 1px solid #eee; }
+            
+            /* 强制打印颜色 */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            html, body {
+                width: 210mm;
+                background: #fff !important;
+                font-size: 12px;
+                line-height: 1.5;
+            }
+            
+            /* 隐藏不需要打印的元素 */
+            .action-buttons, .upload-btn, .footer, .toast, .theme-switcher { 
+                display: none !important; 
+            }
+            
+            /* 简历容器 - 改为单列布局更适合打印 */
+            .resume-container {
+                display: block !important;
+                width: 100% !important;
+                min-height: auto !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                background: #fff !important;
+            }
+            
+            /* 侧边栏 - 打印时作为页眉区域 */
+            .sidebar {
+                display: block !important;
+                width: 100% !important;
+                background: linear-gradient(135deg, #f8fdf8 0%, #e8f5e9 100%) !important;
+                border-right: none !important;
+                border-bottom: 3px solid var(--primary-color) !important;
+                padding: 15mm 10mm 10mm 10mm !important;
+                page-break-after: avoid;
+            }
+            
+            /* 头像区域 - 左对齐，与信息并排 */
+            .avatar-section {
+                float: left;
+                width: auto;
+                margin-right: 20mm;
+                margin-bottom: 0;
+            }
+            
+            #avatar-img {
+                width: 80px !important;
+                height: 80px !important;
+                margin-bottom: 8px !important;
+                border: 3px solid #fff !important;
+                box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2) !important;
+            }
+            
+            .name {
+                font-size: 24px !important;
+                margin-bottom: 3px !important;
+                text-align: left !important;
+            }
+            
+            /* 信息块 - 并排显示 */
+            .info-block {
+                display: inline-block;
+                vertical-align: top;
+                width: auto;
+                min-width: 140px;
+                margin-right: 15px;
+                margin-bottom: 8px !important;
+            }
+            
+            .block-title {
+                font-size: 11px !important;
+                padding-bottom: 4px !important;
+                margin-bottom: 8px !important;
+                border-bottom: 1px solid var(--border-color) !important;
+            }
+            
+            .info-row {
+                margin-bottom: 6px !important;
+                gap: 6px !important;
+            }
+            
+            .info-icon-wrapper {
+                width: 18px !important;
+                height: 18px !important;
+            }
+            
+            .sidebar-icon {
+                width: 12px !important;
+                height: 12px !important;
+            }
+            
+            .info-text {
+                font-size: 11px !important;
+            }
+            
+            /* GitHub链接打印样式 */
+            .github-link {
+                color: var(--text-secondary) !important;
+                text-decoration: none !important;
+            }
+            
+            /* 核心优势 - 横向排列 */
+            .core-advantage {
+                clear: both;
+                padding-top: 8px;
+            }
+            
+            .core-advantage ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .core-advantage li {
+                font-size: 10px !important;
+                margin-bottom: 0 !important;
+                flex: 1 1 180px;
+            }
+            
+            .core-advantage li .check-icon {
+                width: 10px !important;
+                height: 10px !important;
+                margin-top: 2px !important;
+            }
+            
+            /* 主内容区 */
+            .main-content {
+                display: block !important;
+                width: 100% !important;
+                padding: 8mm 5mm !important;
+                background: #fff !important;
+            }
+            
+            section {
+                margin-bottom: 12px !important;
+                page-break-inside: avoid;
+            }
+            
+            section h2 {
+                font-size: 13px !important;
+                padding: 6px 10px !important;
+                margin-bottom: 10px !important;
+                background: linear-gradient(to right, rgba(46, 125, 50, 0.12), transparent) !important;
+                border-left: 3px solid var(--primary-color) !important;
+            }
+            
+            section h2 svg {
+                width: 14px !important;
+                height: 14px !important;
+            }
+            
+            .item {
+                margin-bottom: 12px !important;
+                page-break-inside: avoid;
+            }
+            
+            .item-header {
+                margin-bottom: 4px !important;
+                padding-bottom: 3px !important;
+            }
+            
+            .item-header span:first-child {
+                font-size: 12px !important;
+            }
+            
+            .item-header span:last-child {
+                font-size: 10px !important;
+                background: #f0f0f0 !important;
+                padding: 1px 6px !important;
+            }
+            
+            .item-subheader {
+                font-size: 11px !important;
+                margin: 4px 0 !important;
+            }
+            
+            .item-content {
+                font-size: 11px !important;
+                line-height: 1.55 !important;
+            }
+            
+            .item-content p {
+                margin-bottom: 3px !important;
+            }
+            
+            .item-content ul, .skills-list ul {
+                margin-top: 4px !important;
+            }
+            
+            .item-content ul li, .skills-list ul li {
+                margin-bottom: 3px !important;
+                padding-left: 12px !important;
+            }
+            
+            .item-content ul li::before, .skills-list ul li::before {
+                width: 3px !important;
+                height: 3px !important;
+                left: 3px !important;
+                top: 7px !important;
+            }
+            
+            .item-content strong {
+                background: rgba(46, 125, 50, 0.08) !important;
+                padding: 0 2px !important;
+            }
+            
+            /* 编辑状态样式移除 */
+            [contenteditable="true"] { 
+                outline: none !important; 
+            }
+            [contenteditable="true"]:hover {
+                background: none !important;
+                outline: none !important;
+            }
+            
+            /* 分页控制 - 第三个项目开始放到第二页 */
+            .page-two-start {
+                page-break-before: always;
+            }
+            
+            /* 第二页页眉样式 */
+            .print-only {
+                display: block !important;
+            }
+            
+            .page-header {
+                display: flex !important;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px 12px;
+                margin-bottom: 12px;
+                background: linear-gradient(135deg, #f8fdf8 0%, #e8f5e9 100%) !important;
+                border-bottom: 2px solid var(--primary-color) !important;
+                border-radius: 4px;
+            }
+            
+            .page-header-name {
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--primary-color);
+            }
+            
+            .page-header-title {
+                font-size: 11px;
+                color: var(--text-secondary);
+                font-weight: 500;
+            }
+            
+            .page-header-contact {
+                font-size: 10px;
+                color: var(--text-light);
+            }
+            
+            /* 确保实习经历不会单独在第三页 */
+            #experience {
+                page-break-before: avoid;
+                page-break-inside: avoid;
+            }
         }
     </style>
 </head>
@@ -465,15 +838,13 @@
                         </div>
                         <span class="info-text" contenteditable="true">3147226574@qq.com</span>
                     </div>
-                    <!-- 微信/其他（备用） -->
-                    <!--
                     <div class="info-row">
                         <div class="info-icon-wrapper">
-                            <svg class="sidebar-icon" viewBox="0 0 24 24"><path d="M...微信图标路径..."/></svg>
+                            <!-- GitHub图标 -->
+                            <svg class="sidebar-icon" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                         </div>
-                        <span class="info-text" contenteditable="true">WeChatID</span>
+                        <a class="info-text github-link" href="https://github.com/zilingcunzhang" target="_blank" contenteditable="false">github.com/zilingcunzhang</a>
                     </div>
-                    -->
                 </div>
             </div>
 
@@ -579,8 +950,13 @@
                     </div>
                 </div>
 
-                <!-- 项目 3 -->
-                <div class="item">
+                <!-- 项目 3 (第二页开始) -->
+                <div class="item page-two-start">
+                    <div class="page-header print-only">
+                        <span class="page-header-name">袁恒</span>
+                        <span class="page-header-title">Java开发工程师</span>
+                        <span class="page-header-contact">15873441932 | 3147226574@qq.com</span>
+                    </div>
                     <div class="item-header">
                         <span contenteditable="true">企业员工管理系统 (课程设计)</span>
                         <span contenteditable="true">2023.09 - 2023.11</span>
@@ -623,14 +999,35 @@
     </div>
 
     <div class="action-buttons">
+        <!-- 主题切换 -->
+        <div class="theme-switcher">
+            <div class="theme-dot" style="background: #2E7D32;" onclick="setTheme('green')" title="稳重绿"></div>
+            <div class="theme-dot" style="background: #1565C0;" onclick="setTheme('blue')" title="商务蓝"></div>
+            <div class="theme-dot" style="background: #6A1B9A;" onclick="setTheme('purple')" title="优雅紫"></div>
+            <div class="theme-dot" style="background: #455A64;" onclick="setTheme('gray')" title="极简灰"></div>
+        </div>
+
         <button class="export-btn" onclick="window.print()">
             <svg style="width:20px;height:20px;fill:currentColor" viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h3v4h14v-4h3v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 12v2H8v-2h8zm2-2v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/><circle cx="18" cy="11.5" r="1"/></svg>
             导出 / 打印简历
+        </button>
+        <button class="reset-btn" onclick="copyContact()">
+            <svg style="width:16px;height:16px;fill:currentColor;vertical-align:middle;margin-right:4px" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            复制联系方式
         </button>
         <button class="reset-btn" onclick="resetResume()">
             重置 / 清空缓存
         </button>
     </div>
+    
+    <!-- Toast 提示 -->
+    <div class="toast" id="toast"></div>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>本简历使用纯 HTML/CSS/JS 构建，支持在线编辑与导出</p>
+        <p>最后更新：2024年12月 | <a href="https://github.com/zilingcunzhang" target="_blank">GitHub</a></p>
+    </footer>
 
     <script>
         // --- Persistence Logic (Auto-Save) ---
@@ -693,6 +1090,79 @@
                 });
                 location.reload();
             }
+        }
+
+        // 4. Toast 提示函数
+        function showToast(message, duration = 2000) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration);
+        }
+
+        // 5. 复制联系方式
+        window.copyContact = function() {
+            const name = document.querySelector('.name').textContent.trim();
+            const phone = document.querySelectorAll('.info-text')[4]?.textContent.trim() || '15873441932';
+            const email = document.querySelectorAll('.info-text')[5]?.textContent.trim() || '3147226574@qq.com';
+            
+            const contactInfo = `${name}\n📱 ${phone}\n📧 ${email}`;
+            
+            navigator.clipboard.writeText(contactInfo).then(() => {
+                showToast('✅ 联系方式已复制到剪贴板');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = contactInfo;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('✅ 联系方式已复制到剪贴板');
+            });
+        }
+
+        // 7. 纯文本粘贴 (防止格式混乱)
+        document.addEventListener('paste', function(e) {
+            if (e.target.isContentEditable) {
+                e.preventDefault();
+                const text = (e.clipboardData || window.clipboardData).getData('text');
+                document.execCommand('insertText', false, text);
+            }
+        });
+
+        // 8. 主题切换逻辑
+        function setTheme(color) {
+            const root = document.documentElement;
+            // 设置 CSS 变量
+            root.style.setProperty('--primary-color', `var(--primary-${color})`);
+            root.style.setProperty('--accent-color', `var(--accent-${color})`);
+            root.style.setProperty('--bg-sidebar', `var(--bg-sidebar-${color})`);
+            root.style.setProperty('--border-color', `var(--border-${color})`);
+            
+            // 保存选择
+            localStorage.setItem(STORAGE_KEY_PREFIX + 'theme', color);
+            
+            // 更新 UI 状态
+            document.querySelectorAll('.theme-dot').forEach(dot => {
+                dot.classList.remove('active');
+                if(dot.onclick.toString().includes(color)) {
+                    dot.classList.add('active');
+                }
+            });
+            
+            showToast(`🎨 主题已切换为：${{green:'稳重绿', blue:'商务蓝', purple:'优雅紫', gray:'极简灰'}[color]}`);
+        }
+
+        // 初始化主题
+        const savedTheme = localStorage.getItem(STORAGE_KEY_PREFIX + 'theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            // 默认选中绿色
+            document.querySelector('.theme-dot').classList.add('active');
         }
     </script>
 
