@@ -5,17 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>袁恒 - Java开发工程师简历</title>
     <style>
-        /* --- Google Fonts & Global Reset --- */
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
-
+        /* --- Global Variables & Reset --- */
         :root {
-            --primary-color: #76b900;
-            --background-color: #fafafa;
-            --card-background: #ffffff;
-            --text-color: #333333;
-            --light-text-color: #666666;
-            --border-radius: 8px;
-            --shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* 主色调：稳重的墨绿色，体现专业与成长 */
+            --primary-color: #2E7D32; 
+            /* 强调色：用于次级标题或高亮，稍浅的绿色 */
+            --accent-color: #4CAF50;
+            /* 背景色 */
+            --bg-body: #eaeff2;
+            --bg-paper: #ffffff;
+            --bg-sidebar: #f8fcf8;
+            /* 文字颜色 */
+            --text-main: #2c3e50;
+            --text-secondary: #546e7a;
+            --text-light: #90a4ae;
+            /* 边框与分割线 */
+            --border-color: #e0e6ed;
+            /* 尺寸 */
+            --page-width: 210mm;
+            --sidebar-width: 240px;
         }
 
         * {
@@ -25,283 +33,322 @@
         }
 
         body {
-            font-family: 'Noto Sans SC', sans-serif;
-            background-color: #eef2f5; /* Page background outside the resume */
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.75;
             font-size: 14px;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Main Resume Container (A4 Size) --- */
+        /* --- Resume Container (Paper Style) --- */
         .resume-container {
             display: flex;
-            width: 210mm;
-            min-height: 297mm;
-            margin: 30px auto;
-            background-color: var(--background-color);
-            box-shadow: var(--shadow);
+            width: var(--page-width);
+            min-height: 297mm; /* A4 height */
+            margin: 40px auto;
+            background-color: var(--bg-paper);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
         }
 
-        /* --- Left Sidebar --- */
+        /* --- Sidebar (Left) --- */
         .sidebar {
-            width: 220px;
-            background-color: var(--card-background);
-            padding: 18px;
-            color: var(--text-color);
+            width: var(--sidebar-width);
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            padding: 40px 25px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .avatar-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        #avatar-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        #avatar-img:hover {
+            transform: scale(1.02);
+        }
+
+        .name {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        
+        /* Sidebar Blocks */
+        .info-block {
+            margin-bottom: 15px;
+        }
+        .block-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-list, .basic-info {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+        }
+        
+        .contact-item, .info-row {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .label {
+            font-weight: 600;
+            color: var(--text-main);
+            width: 70px; /* Fixed width for labels alignment */
             flex-shrink: 0;
         }
         
-        /* --- Right Main Content --- */
+        .value {
+            flex: 1;
+            word-break: break-all;
+        }
+
+        .core-advantage li {
+            font-size: 13px;
+            margin-bottom: 10px;
+            list-style: none;
+            position: relative;
+            padding-left: 15px;
+            color: var(--text-secondary);
+        }
+        .core-advantage li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* --- Main Content (Right) --- */
         .main-content {
             flex-grow: 1;
-            padding: 20px 35px;
+            padding: 40px 45px;
+            background-color: var(--bg-paper);
         }
 
-        /* --- Editable Content Style --- */
-        [contenteditable="true"] {
-            cursor: text;
-            transition: background-color 0.3s;
-        }
-        [contenteditable="true"]:hover,
-        [contenteditable="true"]:focus {
-            background-color: #f0fff0;
-            outline: 1px dashed var(--primary-color);
+        section {
+            margin-bottom: 35px;
         }
 
-        /* --- Sidebar Specific Styles --- */
-        .avatar-section {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        #avatar-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary-color);
-            margin-bottom: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-        #avatar-upload-input {
-            display: none;
-        }
-        .upload-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 5px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .upload-btn:hover {
-            background-color: #5e9400;
-        }
-        .sidebar .name {
-            font-size: 20px;
-            font-weight: 700;
-            text-align: center;
+        section h2 {
+            font-size: 18px;
             color: var(--primary-color);
-            margin-bottom: 25px;
-        }
-        .info-block {
-            margin-bottom: 20px;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            background: var(--card-background);
-        }
-        .block-title {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 6px;
-            font-weight: 500;
-            text-align: center;
-        }
-        .block-content {
-            padding: 12px;
-            font-size: 13px;
-        }
-        .block-content p {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        .block-content p span:first-child {
-            font-weight: 500;
-            flex-shrink: 0;
-            margin-right: 10px;
-        }
-        .block-content p span:last-child {
-            text-align: right;
-        }
-        .block-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .block-content li {
-            margin-bottom: 8px;
-            text-indent: -1.2em;
-            padding-left: 1.2em;
-        }
-        .block-content li::before {
-            content: '•';
-            color: var(--primary-color);
-            margin-right: 0.5em;
-        }
-        .block-content ul strong {
-             display: inline;
-             color: var(--primary-color);
-             font-weight: 700;
-        }
-
-        /* --- Main Content Specific Styles --- */
-        .main-content section {
-            margin-bottom: 25px;
-        }
-        .main-content h2 {
-            font-size: 20px;
-            color: var(--primary-color);
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 8px;
+            background: rgba(46, 125, 50, 0.05); /* Light green bg */
+            padding: 8px 12px;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 0 4px 4px 0;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
+        /* Project & Experience Items */
         .item {
-            margin-bottom: 15px;
-            padding: 10px 15px;
-            background: var(--card-background);
-            border-left: 4px solid var(--primary-color);
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            position: relative;
         }
+        
+        /* Remove last item margin in section */
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
         .item-header {
             display: flex;
             justify-content: space-between;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        .item-subheader {
-            color: var(--primary-color);
-            font-weight: 700;
-            font-size: 15px;
-            margin-bottom: 8px;
-        }
-        .item-description {
-            color: var(--light-text-color);
-            padding-bottom: 8px;
-            font-style: italic;
-        }
-        .item-content {
-             color: var(--light-text-color);
-        }
-        .item-content p {
-             margin-top: 8px;
-        }
-        .item-content ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-        .item-content ul li {
-            margin-bottom: 5px;
-            padding-left: 0;
-            text-indent: 0;
-        }
-        .item-content ul li::before {
-             content: '';
-             margin-right: 0;
+            align-items: baseline;
+            margin-bottom: 6px;
         }
         
-        .skills-list {
-            list-style: none;
-            padding: 0;
-        }
-        .skills-list li {
-            margin-bottom: 10px;
-            display: flex;
-            padding-left: 0;
-            text-indent: 0;
-        }
-        .skills-list li::before {
-             content: '';
-             margin-right: 0;
-        }
-        .skills-list strong {
-            font-weight: 700;
-            color: var(--text-color);
-            flex-shrink: 0;
-            width: 90px;
-        }
-        
-        /* --- Action Buttons & Print Optimization --- */
-        .action-buttons {
-            text-align: center;
-            padding: 20px 0 40px 0;
-        }
-        .export-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: var(--border-radius);
+        .item-header span:first-child {
             font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-weight: 700;
+            color: var(--text-main);
         }
-        .export-btn:hover {
-            background-color: #5e9400;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        
+        .item-header span:last-child {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 500;
+            white-space: nowrap;
+            margin-left: 10px;
         }
 
-        /* --- Responsive Design --- */
-        @media (max-width: 800px) {
-            body {
-                background-color: var(--background-color);
-            }
+        .item-subheader {
+            font-size: 15px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .item-description {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .item-content {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .item-content p {
+            margin-bottom: 6px;
+        }
+        
+        .item-content strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Lists in Main Content */
+        .item-content ul, .skills-list ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 8px;
+        }
+        
+        .item-content ul li, .skills-list ul li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 6px;
+        }
+        
+        .item-content ul li::before, .skills-list ul li::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 10px; /* Align with text line */
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+
+        /* Skills Specific */
+        .skills-list li {
+            display: flex;
+            align-items: baseline;
+        }
+        .skills-list strong {
+            color: var(--text-main);
+            min-width: 100px; /* Align content */
+            margin-right: 10px;
+        }
+
+        /* --- Functional Elements --- */
+        [contenteditable="true"]:hover {
+            background-color: rgba(46, 125, 50, 0.05);
+            outline: 1px dashed var(--accent-color);
+            cursor: text;
+        }
+        
+        #avatar-upload-input { display: none; }
+        
+        .upload-btn {
+            margin-top: 10px;
+            background: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .upload-btn:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .action-buttons {
+            text-align: center;
+            padding-bottom: 40px;
+        }
+        .export-btn {
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+            transition: transform 0.2s;
+        }
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(46, 125, 50, 0.4);
+        }
+
+        /* --- Responsive & Print --- */
+        @media (max-width: 850px) {
             .resume-container {
-                flex-direction: column;
                 width: 100%;
-                min-height: auto;
+                flex-direction: column;
                 margin: 0;
                 box-shadow: none;
             }
             .sidebar {
                 width: 100%;
-                border-bottom: 2px solid #e0e0e0;
-            }
-            .main-content {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                flex-direction: row;
+                flex-wrap: wrap;
                 padding: 20px;
             }
+            .avatar-section { width: 100%; margin-bottom: 20px; }
+            .info-block { width: 100%; }
         }
-        
-        /* --- Print Styles --- */
+
         @media print {
-            @page {
-                size: A4;
-                margin: 0;
-            }
-            html, body {
-                width: 210mm;
-                height: 297mm;
-                background: #fff;
-            }
+            @page { margin: 0; size: auto; }
+            body { background: #fff; }
             .resume-container {
+                width: 100%;
+                min-height: 100vh;
                 margin: 0;
                 box-shadow: none;
-                width: 100%;
-                height: 100%;
             }
-            .action-buttons, .upload-btn {
-                display: none;
-            }
-            [contenteditable="true"] {
-                outline: none;
-                background-color: transparent;
-            }
+            .action-buttons, .upload-btn { display: none; }
+            [contenteditable="true"] { outline: none; background: none !important; }
+            /* Force background colors print */
+            section h2 { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
@@ -320,29 +367,47 @@
 
             <div class="info-block">
                 <div class="block-title">基本信息</div>
-                <div class="block-content">
-                    <p><span contenteditable="true">求职意向</span> <span contenteditable="true">Java开发工程师</span></p>
-                    <p><span contenteditable="true">工作经验</span> <span contenteditable="true">应届生</span></p>
-                    <p><span contenteditable="true">学  历</span> <span contenteditable="true">本科</span></p>
-                    <p><span contenteditable="true">毕业院校</span> <span contenteditable="true">湖南工业大学科技学院</span></p>
+                <div class="block-content basic-info">
+                    <div class="info-row">
+                        <span class="label">求职意向</span>
+                        <span class="value" contenteditable="true">Java开发工程师</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">工作经验</span>
+                        <span class="value" contenteditable="true">应届生</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">学历</span>
+                        <span class="value" contenteditable="true">本科</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">毕业院校</span>
+                        <span class="value" contenteditable="true">湖南工业大学科技学院</span>
+                    </div>
                 </div>
             </div>
 
             <div class="info-block">
                 <div class="block-title">联系方式</div>
-                <div class="block-content">
-                    <p><span contenteditable="true">手机</span> <span contenteditable="true">15873441932</span></p>
-                    <p><span contenteditable="true">邮箱</span> <span contenteditable="true">3147226574@qq.com</span></p>
+                <div class="block-content contact-list">
+                    <div class="contact-item">
+                        <span class="label">手机</span>
+                        <span class="value" contenteditable="true">15873441932</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="label">邮箱</span>
+                        <span class="value" contenteditable="true">3147226574@qq.com</span>
+                    </div>
                 </div>
             </div>
 
             <div class="info-block">
                 <div class="block-title">核心优势</div>
-                <div class="block-content" contenteditable="true">
+                <div class="block-content core-advantage" contenteditable="true">
                     <ul>
                         <li><strong>快速学习：</strong>对新技术充满热情，具备出色的自学和解决问题能力。</li>
                         <li><strong>团队协作：</strong>沟通能力强，能迅速融入团队，积极承担责任。</li>
-                        <li><strong>AI增效：</strong>熟练运用AI工具(Claude/GPT/Cursor)辅助编码、调试和学习，显著提升开发效率。</li>
+                        <li><strong>AI增效：</strong>熟练运用AI工具(Claude code/codex/Cursor)辅助编码、调试和学习，显著提升开发效率。</li>
                     </ul>
                 </div>
             </div>
@@ -359,7 +424,6 @@
                         <span contenteditable="true">2021.09 - 2025.06</span>
                     </div>
                     <div class="item-subheader" contenteditable="true">计算机科学与技术 (本科)</div>
-                    <!-- --- UPDATED SECTION --- -->
                     <div class="item-content" contenteditable="true">
                         <p><strong>核心课程：</strong>操作系统、软件工程、数据结构、计算机网络</p>
                     </div>
@@ -380,7 +444,7 @@
                         <li><strong>数据库/中间件：</strong>熟练使用 MySQL 进行数据库设计，熟悉 Redis 缓存应用。</li>
                         <li><strong>工程化工具：</strong>熟练使用 Git 版本控制，熟悉 Maven 构建与 Linux 基础命令。</li>
                         <!-- 备选技能（根据岗位决定是否展示）：
-                        <li><strong>云服务实战：</strong>具备阿里云 OSS / VOD 对接经验。</li>
+                        <li><strong>云服务实战：</strong>具备阿里云OSS / VOD 对接经验。</li>
                         <li><strong>前端技术：</strong>熟悉 Element-UI, JavaScript, ECharts 可视化。</li>
                         -->
                     </ul>
@@ -397,10 +461,11 @@
                         <span contenteditable="true">2024.12 - 2025.04</span>
                     </div>
                     <div class="item-content" contenteditable="true">
-                        <p><strong>项目角色：</strong>后端核心开发 / 全栈协作者</p>
+                        <p><strong>项目角色：</strong>独立开发者 (全栈开发)</p>
                         <p><strong>技术栈：</strong>SpringBoot, MyBatis-Plus, Redis, MySQL, Vue.js, 阿里云OSS</p>
                         <p><strong>项目难点与解决方案：</strong></p>
                         <ul>
+                            <li><strong>全栈架构设计：</strong>独立完成了从需求分析、数据库ER建模、后端API接口设计到前端页面实现的完整开发流程。</li>
                             <li><strong>大文件存储问题：</strong>针对视频课程占用服务器带宽问题，通过对接阿里云OSS和VOD，实现了视频的云端直传与点播，降低了本地服务器压力。</li>
                             <li><strong>高并发性能优化：</strong>在课程详情页等高频访问接口引入 Redis 缓存，减少数据库查询次数，提升了系统响应速度。</li>
                             <li><strong>复杂权限管理：</strong>设计了基于角色的权限控制系统(RBAC)，实现了学员、讲师、管理员三端的权限隔离与数据安全。</li>
@@ -419,20 +484,20 @@
                         <p><strong>技术栈：</strong>Java Web, Vue 3, Vant UI, JDBC</p>
                         <p><strong>主要贡献：</strong></p>
                         <ul>
-                            <li><strong>从0到1架构：</strong>独立完成了从数据库ER图设计、后端API接口规范制定到前端页面交互的完整开发流程。</li>
+                            <li><strong>从0到1架构：</strong>独立完成了从数据库ER图设计、后端API接口规范制定到前端界面实现的完整开发流程。</li>
                             <li><strong>用户体验优化：</strong>前端采用 Vue 3 组合式API重构逻辑，配合 Vant UI 实现了丝滑的移动端阅读体验（如触屏翻页、夜间模式）。</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- 项目 3 (新增占位，建议凑齐3个) -->
+                <!-- 项目 3 (新增占位) -->
                 <div class="item">
                     <div class="item-header">
                         <span contenteditable="true">企业员工管理系统 (课程设计)</span>
                         <span contenteditable="true">2023.09 - 2023.11</span>
                     </div>
                     <div class="item-content" contenteditable="true">
-                        <p><strong>项目角色：</strong>后端开发组长</p>
+                        <p><strong>项目角色：</strong>组长(后端开发)</p>
                         <p><strong>技术栈：</strong>SSM (Spring+SpringMVC+MyBatis), JSP, jQuery</p>
                         <p><strong>主要贡献：</strong></p>
                         <ul>
@@ -454,7 +519,7 @@
                     <div class="item-subheader" contenteditable="true">Java开发 & 嵌入式实习生</div>
                     <div class="item-content" contenteditable="true">
                         <ul>
-                           <li>系统性地完成了Java Web全栈技能培训，掌握了从后端Java、JDBC到前端HTML、JavaScript及SSH框架的开发流程，为后续项目开发奠定了坚实基础。</li>
+                           <li>系统性地完成了Java Web全栈技能培训，掌握了从后端Java、JDBC到前端HTML、JavaScript及SSH框架的开发流程。</li>
                            <li>参与嵌入式Linux项目，使用C语言进行多媒体应用开发，锻炼了底层编程能力与系统级问题解决能力。</li>
                         </ul>
                     </div>
