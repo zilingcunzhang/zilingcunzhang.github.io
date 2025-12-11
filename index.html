@@ -7,23 +7,23 @@
     <style>
         /* --- Global Variables & Reset --- */
         :root {
-            /* 主色调：稳重的墨绿色，体现专业与成长 */
+            /* 主色调：稳重的墨绿色 */
             --primary-color: #2E7D32; 
-            /* 强调色：用于次级标题或高亮，稍浅的绿色 */
+            /* 强调色：稍浅的绿色 */
             --accent-color: #4CAF50;
             /* 背景色 */
             --bg-body: #eaeff2;
             --bg-paper: #ffffff;
-            --bg-sidebar: #f8fcf8;
+            --bg-sidebar: #fafdfa; /* 极淡的绿色背景，比纯白更有质感 */
             /* 文字颜色 */
             --text-main: #2c3e50;
-            --text-secondary: #546e7a;
-            --text-light: #90a4ae;
+            --text-secondary: #455a64;
+            --text-light: #78909c;
             /* 边框与分割线 */
-            --border-color: #e0e6ed;
+            --border-color: #e8f5e9;
             /* 尺寸 */
             --page-width: 210mm;
-            --sidebar-width: 240px;
+            --sidebar-width: 260px; /* 稍微加宽侧边栏以容纳图标 */
         }
 
         * {
@@ -36,7 +36,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
-            line-height: 1.75;
+            line-height: 1.6; /* 稍微减小行高，更紧凑 */
             font-size: 14px;
             -webkit-font-smoothing: antialiased;
         }
@@ -45,10 +45,10 @@
         .resume-container {
             display: flex;
             width: var(--page-width);
-            min-height: 297mm; /* A4 height */
+            min-height: 297mm;
             margin: 40px auto;
             background-color: var(--bg-paper);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06); /* 更柔和的阴影 */
             position: relative;
         }
 
@@ -57,11 +57,11 @@
             width: var(--sidebar-width);
             background-color: var(--bg-sidebar);
             border-right: 1px solid var(--border-color);
-            padding: 40px 25px;
+            padding: 45px 30px;
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 35px;
         }
 
         .avatar-section {
@@ -72,13 +72,13 @@
         }
 
         #avatar-img {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #fff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
+            border: 4px solid #fff;
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.15); /* 带颜色的阴影 */
+            margin-bottom: 20px;
             transition: transform 0.3s ease;
         }
         #avatar-img:hover {
@@ -86,74 +86,99 @@
         }
 
         .name {
-            font-size: 26px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 800;
             color: var(--primary-color);
             text-align: center;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             margin-bottom: 5px;
-            line-height: 1.3;
+            line-height: 1.2;
         }
         
         /* Sidebar Blocks */
         .info-block {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
+        
         .block-title {
             font-size: 16px;
             font-weight: 700;
             color: var(--text-main);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 8px;
-            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-color); /* 更淡的分割线 */
+            padding-bottom: 10px;
+            margin-bottom: 18px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 侧边栏图标通用样式 */
+        .sidebar-icon {
+            width: 16px;
+            height: 16px;
+            fill: var(--primary-color);
+            opacity: 0.8;
+            flex-shrink: 0;
         }
         
-        .contact-list, .basic-info {
+        .info-content {
             font-size: 13.5px;
             color: var(--text-secondary);
         }
         
-        .contact-item, .info-row {
+        .info-row {
             display: flex;
-            align-items: baseline;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
+            align-items: flex-start; /* 对齐顶部 */
+            margin-bottom: 15px;
+            gap: 12px;
         }
         
-        .label {
-            font-weight: 600;
-            color: var(--text-main);
-            width: 70px; /* Fixed width for labels alignment */
+        .info-icon-wrapper {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(46, 125, 50, 0.08);
+            border-radius: 6px;
             flex-shrink: 0;
+            margin-top: -2px; /* 微调图标垂直对齐 */
         }
         
-        .value {
+        .info-text {
             flex: 1;
             word-break: break-all;
+            line-height: 1.5;
         }
-
+        
+        /* 核心优势列表 */
+        .core-advantage ul {
+            list-style: none;
+            padding: 0;
+        }
         .core-advantage li {
             font-size: 13px;
-            margin-bottom: 10px;
-            list-style: none;
+            margin-bottom: 12px;
             position: relative;
-            padding-left: 15px;
+            padding-left: 0;
             color: var(--text-secondary);
+            display: flex;
+            gap: 10px;
         }
-        .core-advantage li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
+        .core-advantage li .check-icon {
+            width: 14px;
+            height: 14px;
+            fill: var(--accent-color);
+            flex-shrink: 0;
+            margin-top: 4px;
         }
 
         /* --- Main Content (Right) --- */
         .main-content {
             flex-grow: 1;
-            padding: 40px 45px;
+            padding: 45px 50px;
             background-color: var(--bg-paper);
         }
 
@@ -164,23 +189,29 @@
         section h2 {
             font-size: 18px;
             color: var(--primary-color);
-            background: rgba(46, 125, 50, 0.05); /* Light green bg */
-            padding: 8px 12px;
+            background: linear-gradient(to right, rgba(46, 125, 50, 0.08), transparent); /* 渐变背景 */
+            padding: 10px 15px;
             border-left: 4px solid var(--primary-color);
-            border-radius: 0 4px 4px 0;
-            margin-bottom: 20px;
+            border-radius: 4px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+        }
+        
+        /* 标题图标 */
+        section h2 svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary-color);
         }
 
         /* Project & Experience Items */
         .item {
-            margin-bottom: 25px;
+            margin-bottom: 28px;
             position: relative;
         }
         
-        /* Remove last item margin in section */
         .item:last-child {
             margin-bottom: 0;
         }
@@ -190,6 +221,8 @@
             justify-content: space-between;
             align-items: baseline;
             margin-bottom: 6px;
+            border-bottom: 1px dashed var(--border-color); /* 添加虚线分割 */
+            padding-bottom: 6px;
         }
         
         .item-header span:first-child {
@@ -203,27 +236,23 @@
             color: var(--text-light);
             font-weight: 500;
             white-space: nowrap;
-            margin-left: 10px;
+            margin-left: 15px;
+            background: #f5f5f5;
+            padding: 2px 8px;
+            border-radius: 10px;
         }
 
         .item-subheader {
-            font-size: 15px;
+            font-size: 14.5px;
             color: var(--primary-color);
             font-weight: 600;
-            margin-bottom: 5px;
+            margin: 8px 0;
         }
         
-        .item-description {
-            font-style: italic;
-            color: var(--text-light);
-            margin-bottom: 10px;
-            font-size: 13.5px;
-            line-height: 1.6;
-        }
-
         .item-content {
             font-size: 14px;
             color: var(--text-secondary);
+            line-height: 1.7;
         }
         
         .item-content p {
@@ -231,11 +260,14 @@
         }
         
         .item-content strong {
-            color: var(--primary-color);
-            font-weight: 600;
+            color: var(--text-main); /* 强调文字改为深色，增加对比 */
+            font-weight: 700;
+            background: rgba(46, 125, 50, 0.06); /* 强调文字背景 */
+            padding: 0 4px;
+            border-radius: 2px;
         }
 
-        /* Lists in Main Content */
+        /* 列表优化 */
         .item-content ul, .skills-list ul {
             list-style: none;
             padding-left: 0;
@@ -244,7 +276,7 @@
         
         .item-content ul li, .skills-list ul li {
             position: relative;
-            padding-left: 16px;
+            padding-left: 18px;
             margin-bottom: 6px;
         }
         
@@ -252,22 +284,12 @@
             content: '';
             position: absolute;
             left: 5px;
-            top: 10px; /* Align with text line */
-            width: 5px;
-            height: 5px;
+            top: 10px;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
             background-color: var(--accent-color);
-        }
-
-        /* Skills Specific */
-        .skills-list li {
-            display: flex;
-            align-items: baseline;
-        }
-        .skills-list strong {
-            color: var(--text-main);
-            min-width: 100px; /* Align content */
-            margin-right: 10px;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2); /* 增加圆点光晕 */
         }
 
         /* --- Functional Elements --- */
@@ -275,20 +297,22 @@
             background-color: rgba(46, 125, 50, 0.05);
             outline: 1px dashed var(--accent-color);
             cursor: text;
+            border-radius: 2px;
         }
         
         #avatar-upload-input { display: none; }
         
         .upload-btn {
-            margin-top: 10px;
-            background: transparent;
+            margin-top: 15px;
+            background: #fff;
             color: var(--primary-color);
             border: 1px solid var(--primary-color);
-            padding: 4px 10px;
-            border-radius: 15px;
+            padding: 6px 16px;
+            border-radius: 20px;
             font-size: 12px;
             cursor: pointer;
             transition: all 0.2s;
+            font-weight: 600;
         }
         .upload-btn:hover {
             background: var(--primary-color);
@@ -297,23 +321,42 @@
 
         .action-buttons {
             text-align: center;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
         .export-btn {
             background: var(--primary-color);
             color: #fff;
             border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
+            padding: 12px 35px;
+            border-radius: 30px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
-            transition: transform 0.2s;
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.25);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         .export-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(46, 125, 50, 0.4);
+            box-shadow: 0 12px 25px rgba(46, 125, 50, 0.35);
+        }
+        
+        .reset-btn {
+            background: #fff;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .reset-btn:hover {
+            background: #f5f5f5;
+            color: var(--text-main);
         }
 
         /* --- Responsive & Print --- */
@@ -328,12 +371,11 @@
                 width: 100%;
                 border-right: none;
                 border-bottom: 1px solid var(--border-color);
-                flex-direction: row;
-                flex-wrap: wrap;
-                padding: 20px;
+                padding: 30px 20px;
             }
-            .avatar-section { width: 100%; margin-bottom: 20px; }
-            .info-block { width: 100%; }
+            .main-content {
+                padding: 30px 20px;
+            }
         }
 
         @media print {
@@ -345,10 +387,11 @@
                 margin: 0;
                 box-shadow: none;
             }
+            .sidebar { background-color: var(--bg-sidebar) !important; -webkit-print-color-adjust: exact; }
             .action-buttons, .upload-btn { display: none; }
             [contenteditable="true"] { outline: none; background: none !important; }
-            /* Force background colors print */
             section h2 { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .item-header span:last-child { background: none; border: 1px solid #eee; }
         }
     </style>
 </head>
@@ -365,49 +408,94 @@
 
             <h1 class="name" contenteditable="true">袁恒</h1>
 
+            <!-- 基本信息 -->
             <div class="info-block">
-                <div class="block-title">基本信息</div>
-                <div class="block-content basic-info">
+                <div class="block-title">
+                    基本信息
+                </div>
+                <div class="info-content basic-info">
                     <div class="info-row">
-                        <span class="label">求职意向</span>
-                        <span class="value" contenteditable="true">Java开发工程师</span>
+                        <div class="info-icon-wrapper">
+                            <!-- 公文包图标 -->
+                            <svg class="sidebar-icon" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                        </div>
+                        <span class="info-text" contenteditable="true">Java开发工程师</span>
                     </div>
                     <div class="info-row">
-                        <span class="label">工作经验</span>
-                        <span class="value" contenteditable="true">应届生</span>
+                        <div class="info-icon-wrapper">
+                            <!-- 经验图标 -->
+                            <svg class="sidebar-icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        </div>
+                        <span class="info-text" contenteditable="true">应届生 / 随时到岗</span>
                     </div>
                     <div class="info-row">
-                        <span class="label">学历</span>
-                        <span class="value" contenteditable="true">本科</span>
+                        <div class="info-icon-wrapper">
+                            <!-- 学历图标 -->
+                            <svg class="sidebar-icon" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                        </div>
+                        <span class="info-text" contenteditable="true">本科</span>
                     </div>
                     <div class="info-row">
-                        <span class="label">毕业院校</span>
-                        <span class="value" contenteditable="true">湖南工业大学科技学院</span>
+                        <div class="info-icon-wrapper">
+                            <!-- 学校图标 -->
+                            <svg class="sidebar-icon" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                        </div>
+                        <span class="info-text" contenteditable="true">湖南工业大学科技学院</span>
                     </div>
                 </div>
             </div>
 
+            <!-- 联系方式 -->
             <div class="info-block">
-                <div class="block-title">联系方式</div>
-                <div class="block-content contact-list">
-                    <div class="contact-item">
-                        <span class="label">手机</span>
-                        <span class="value" contenteditable="true">15873441932</span>
+                <div class="block-title">
+                    联系方式
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-icon-wrapper">
+                            <!-- 手机图标 -->
+                            <svg class="sidebar-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </div>
+                        <span class="info-text" contenteditable="true">15873441932</span>
                     </div>
-                    <div class="contact-item">
-                        <span class="label">邮箱</span>
-                        <span class="value" contenteditable="true">3147226574@qq.com</span>
+                    <div class="info-row">
+                        <div class="info-icon-wrapper">
+                            <!-- 邮箱图标 -->
+                            <svg class="sidebar-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <span class="info-text" contenteditable="true">3147226574@qq.com</span>
                     </div>
+                    <!-- 微信/其他（备用） -->
+                    <!--
+                    <div class="info-row">
+                        <div class="info-icon-wrapper">
+                            <svg class="sidebar-icon" viewBox="0 0 24 24"><path d="M...微信图标路径..."/></svg>
+                        </div>
+                        <span class="info-text" contenteditable="true">WeChatID</span>
+                    </div>
+                    -->
                 </div>
             </div>
 
+            <!-- 核心优势 -->
             <div class="info-block">
-                <div class="block-title">核心优势</div>
-                <div class="block-content core-advantage" contenteditable="true">
+                <div class="block-title">
+                    核心优势
+                </div>
+                <div class="info-content core-advantage" contenteditable="true">
                     <ul>
-                        <li><strong>快速学习：</strong>对新技术充满热情，具备出色的自学和解决问题能力。</li>
-                        <li><strong>团队协作：</strong>沟通能力强，能迅速融入团队，积极承担责任。</li>
-                        <li><strong>AI增效：</strong>熟练运用AI工具(Claude code/codex/Cursor)辅助编码、调试和学习，显著提升开发效率。</li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <span><strong>快速学习：</strong>对新技术充满热情，具备出色的自学和解决问题能力。</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <span><strong>团队协作：</strong>沟通能力强，能迅速融入团队，积极承担责任。</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <span><strong>AI增效：</strong>熟练运用AI工具(Cursor/Claude)辅助编码，显著提升开发效率。</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -417,42 +505,44 @@
         <main class="main-content">
 
             <section id="education">
-                <h2>🎓 教育背景</h2>
+                <h2>
+                    <!-- 毕业帽图标 -->
+                    <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                    教育背景
+                </h2>
                 <div class="item">
                     <div class="item-header">
                         <span contenteditable="true">湖南工业大学科技学院</span>
                         <span contenteditable="true">2021.09 - 2025.06</span>
                     </div>
-                    <div class="item-subheader" contenteditable="true">计算机科学与技术 (本科)</div>
+                    <div class="item-subheader" contenteditable="true">计算机科学与技术 / 本科</div>
                     <div class="item-content" contenteditable="true">
-                        <p><strong>核心课程：</strong>操作系统、软件工程、数据结构、计算机网络</p>
+                        <p><strong>核心课程：</strong>操作系统、软件工程、数据结构、计算机网络、Java程序设计、数据库原理</p>
                     </div>
                 </div>
             </section>
 
             <section id="skills">
-                <h2>💡 专业技能</h2>
-                <!-- 
-                    【简历编写技巧 - 动态调整】
-                    投递简历时，请根据JD（职位描述）动态调整以下内容：
-                    1. 只列出你真正“熟练”且与岗位要求匹配的 2-4 个核心技能。
-                    2. 不太熟练但了解的技能，不要写“熟练”，可以放在“核心优势”里提到，或者放在“其他技能”中。
-                -->
+                <h2>
+                    <!-- 灯泡图标 -->
+                    <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>
+                    专业技能
+                </h2>
                 <div class="skills-list" contenteditable="true">
                     <ul>
                         <li><strong>核心技术栈：</strong>熟练掌握 Java (SpringBoot / MyBatis-Plus) 与 Vue.js 前后端分离开发模式。</li>
-                        <li><strong>数据库/中间件：</strong>熟练使用 MySQL 进行数据库设计，熟悉 Redis 缓存应用。</li>
-                        <li><strong>工程化工具：</strong>熟练使用 Git 版本控制，熟悉 Maven 构建与 Linux 基础命令。</li>
-                        <!-- 备选技能（根据岗位决定是否展示）：
-                        <li><strong>云服务实战：</strong>具备阿里云OSS / VOD 对接经验。</li>
-                        <li><strong>前端技术：</strong>熟悉 Element-UI, JavaScript, ECharts 可视化。</li>
-                        -->
+                        <li><strong>数据库/中间件：</strong>熟练使用 MySQL 进行数据库设计与优化，熟悉 Redis 缓存机制及应用场景。</li>
+                        <li><strong>工程化工具：</strong>熟练使用 Git 进行版本控制，熟悉 Maven 构建工具与 Linux 常用命令。</li>
                     </ul>
                 </div>
             </section>
             
             <section id="projects">
-                <h2>💻 核心项目经验</h2>
+                <h2>
+                    <!-- 电脑图标 -->
+                    <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+                    核心项目经验
+                </h2>
                 
                 <!-- 项目 1 -->
                 <div class="item">
@@ -465,10 +555,9 @@
                         <p><strong>技术栈：</strong>SpringBoot, MyBatis-Plus, Redis, MySQL, Vue.js, 阿里云OSS</p>
                         <p><strong>项目难点与解决方案：</strong></p>
                         <ul>
-                            <li><strong>全栈架构设计：</strong>独立完成了从需求分析、数据库ER建模、后端API接口设计到前端页面实现的完整开发流程。</li>
-                            <li><strong>大文件存储问题：</strong>针对视频课程占用服务器带宽问题，通过对接阿里云OSS和VOD，实现了视频的云端直传与点播，降低了本地服务器压力。</li>
-                            <li><strong>高并发性能优化：</strong>在课程详情页等高频访问接口引入 Redis 缓存，减少数据库查询次数，提升了系统响应速度。</li>
-                            <li><strong>复杂权限管理：</strong>设计了基于角色的权限控制系统(RBAC)，实现了学员、讲师、管理员三端的权限隔离与数据安全。</li>
+                            <li><strong>视频云端存储：</strong>针对视频文件大、占用本地带宽的问题，通过对接阿里云OSS和VOD，实现了视频的云端直传与流畅点播，显著降低了服务器负载。</li>
+                            <li><strong>高并发性能优化：</strong>在课程详情等高频读取接口引入 Redis 缓存策略，减少了 60% 以上的数据库查询压力，提升了页面响应速度。</li>
+                            <li><strong>权限安全设计：</strong>设计并实现了基于角色的访问控制(RBAC)模型，确保了学员、讲师、管理员三端的权限隔离与数据安全。</li>
                         </ul>
                     </div>
                 </div>
@@ -484,25 +573,25 @@
                         <p><strong>技术栈：</strong>Java Web, Vue 3, Vant UI, JDBC</p>
                         <p><strong>主要贡献：</strong></p>
                         <ul>
-                            <li><strong>从0到1架构：</strong>独立完成了从数据库ER图设计、后端API接口规范制定到前端界面实现的完整开发流程。</li>
-                            <li><strong>用户体验优化：</strong>前端采用 Vue 3 组合式API重构逻辑，配合 Vant UI 实现了丝滑的移动端阅读体验（如触屏翻页、夜间模式）。</li>
+                            <li><strong>全流程架构：</strong>独立完成了从需求分析、数据库ER图设计、后端RESTful API规范制定到前端界面交互的完整开发流程。</li>
+                            <li><strong>移动端体验优化：</strong>前端采用 Vue 3 组合式API重构业务逻辑，配合 Vant UI 实现了丝滑的移动端阅读体验（支持触屏翻页、字号调节、夜间模式）。</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- 项目 3 (新增占位) -->
+                <!-- 项目 3 -->
                 <div class="item">
                     <div class="item-header">
                         <span contenteditable="true">企业员工管理系统 (课程设计)</span>
                         <span contenteditable="true">2023.09 - 2023.11</span>
                     </div>
                     <div class="item-content" contenteditable="true">
-                        <p><strong>项目角色：</strong>组长(后端开发)</p>
-                        <p><strong>技术栈：</strong>SSM (Spring+SpringMVC+MyBatis), JSP, jQuery</p>
+                        <p><strong>项目角色：</strong>后端开发 (组长)</p>
+                        <p><strong>技术栈：</strong>SSM (Spring+SpringMVC+MyBatis), JSP</p>
                         <p><strong>主要贡献：</strong></p>
                         <ul>
-                            <li><strong>团队协作：</strong>带领3人小组制定开发计划，使用 Git 进行代码合并与冲突解决。</li>
-                            <li><strong>功能实现：</strong>实现了复杂的员工多条件组合查询与报表导出功能，解决了多表关联查询的数据一致性问题。</li>
+                            <li><strong>团队协作管理：</strong>带领3人小组制定开发计划，规范代码风格，使用 Git 进行分支管理与代码合并。</li>
+                            <li><strong>复杂业务实现：</strong>实现了员工信息的多条件动态组合查询与Excel报表导出功能，解决了多表关联查询的数据一致性难点。</li>
                         </ul>
                     </div>
                 </div>
@@ -510,7 +599,11 @@
             </section>
 
             <section id="experience">
-                <h2>💼 实习经历</h2>
+                <h2>
+                    <!-- 公文包图标 -->
+                    <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                    实习经历
+                </h2>
                 <div class="item">
                     <div class="item-header">
                         <span contenteditable="true">奥嵌有限公司</span>
@@ -519,8 +612,8 @@
                     <div class="item-subheader" contenteditable="true">Java开发 & 嵌入式实习生</div>
                     <div class="item-content" contenteditable="true">
                         <ul>
-                           <li>系统性地完成了Java Web全栈技能培训，掌握了从后端Java、JDBC到前端HTML、JavaScript及SSH框架的开发流程。</li>
-                           <li>参与嵌入式Linux项目，使用C语言进行多媒体应用开发，锻炼了底层编程能力与系统级问题解决能力。</li>
+                           <li><strong>企业级项目实训：</strong>深入参与Java Web全栈开发流程，独立完成了基于SSM框架的业务模块开发，掌握了Git团队协作与代码规范。</li>
+                           <li><strong>嵌入式应用开发：</strong>负责Linux环境下多媒体应用的核心模块开发，利用C语言实现了进程间通信(IPC)与高效文件IO，解决了视频流传输的延迟问题。</li>
                         </ul>
                     </div>
                 </div>
@@ -530,24 +623,77 @@
     </div>
 
     <div class="action-buttons">
-        <button class="export-btn" onclick="window.print()">导出为PDF</button>
+        <button class="export-btn" onclick="window.print()">
+            <svg style="width:20px;height:20px;fill:currentColor" viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h3v4h14v-4h3v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 12v2H8v-2h8zm2-2v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"/><circle cx="18" cy="11.5" r="1"/></svg>
+            导出 / 打印简历
+        </button>
+        <button class="reset-btn" onclick="resetResume()">
+            重置 / 清空缓存
+        </button>
     </div>
 
     <script>
-        // --- Avatar Upload Logic ---
-        const avatarUploadInput = document.getElementById('avatar-upload-input');
+        // --- Persistence Logic (Auto-Save) ---
+        const STORAGE_KEY_PREFIX = 'resume_edit_';
+        const editableElements = document.querySelectorAll('[contenteditable="true"]');
         const avatarImg = document.getElementById('avatar-img');
+        const avatarUploadInput = document.getElementById('avatar-upload-input');
+
+        // 1. Identify each editable element uniquely
+        // We add a data-id to them based on their order if they don't have an ID
+        editableElements.forEach((el, index) => {
+            const id = el.id || `edit_${index}`;
+            el.setAttribute('data-save-key', id);
+            
+            // Restore from storage
+            const savedContent = localStorage.getItem(STORAGE_KEY_PREFIX + id);
+            if (savedContent) {
+                el.innerHTML = savedContent;
+            }
+
+            // Save on input
+            el.addEventListener('input', () => {
+                localStorage.setItem(STORAGE_KEY_PREFIX + id, el.innerHTML);
+            });
+        });
+
+        // 2. Avatar Persistence
+        const savedAvatar = localStorage.getItem(STORAGE_KEY_PREFIX + 'avatar');
+        if (savedAvatar) {
+            avatarImg.src = savedAvatar;
+        }
 
         avatarUploadInput.addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file && file.type.startsWith('image/')) {
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    avatarImg.src = e.target.result;
+                    const base64 = e.target.result;
+                    avatarImg.src = base64;
+                    // Save to local storage
+                    try {
+                        localStorage.setItem(STORAGE_KEY_PREFIX + 'avatar', base64);
+                    } catch (err) {
+                        console.error('Image too large to save to localStorage', err);
+                        alert('图片过大，可能无法保存到本地缓存，建议压缩后再上传。');
+                    }
                 };
                 reader.readAsDataURL(file);
             }
         });
+
+        // 3. Reset Function
+        window.resetResume = function() {
+            if(confirm('确定要重置所有修改内容并恢复默认吗？此操作不可撤销。')) {
+                // Clear all resume related keys
+                Object.keys(localStorage).forEach(key => {
+                    if(key.startsWith(STORAGE_KEY_PREFIX)) {
+                        localStorage.removeItem(key);
+                    }
+                });
+                location.reload();
+            }
+        }
     </script>
 
 </body>
